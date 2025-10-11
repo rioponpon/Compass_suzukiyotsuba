@@ -12,11 +12,12 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         // Register your seeders here
-        $this->call([
+        $this->call(SubjectsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
 
-        ]);
+
     }
 }
