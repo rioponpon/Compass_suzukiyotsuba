@@ -5,6 +5,18 @@
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
+
+      <!--削除-->
+@if(Auth::id() == $post->user_id)
+<div class="post-cell">
+  <div class="delete-btn">
+    <a href="/bulletin_board/delete/{{ $post->id }}" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
+      <button type="Trash">削除</button>
+  </a>
+  </div>
+</div>
+@endif
+
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
