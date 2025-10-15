@@ -36,9 +36,9 @@
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->likes_count }}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->likes_count }}</span></p>
             @endif
           </div>
         </div>
@@ -64,24 +64,6 @@
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
 </div>
-<!-- 編集画面
-<div class="edit-modal js-modal" style="display:none">
-  <div class="modal_bg js-modal-close"></div>
-  <div class="modal_content">
-    <form action="/post/update" method="post">
-      <div class="mt-3">
-        <input type="" name="upTitle" class="modal_post_title w-100">
-      </div>
-      <textarea name="upPost" class="modal_post"></textarea>
-      <input type="hidden" name="id" class="modal_id" value="">
 
-      {{ csrf_field() }}
-      <div class ="modal_footer">
-      <button type="submit" class="submit-btn">編集</button>
-      </div>
-    </form>
-
-  </div>
-</div> -->
 <script src="{{ asset('js/bulletin.js') }}"></script>
 </x-sidebar>
