@@ -13,6 +13,7 @@ class Post extends Model
         'user_id',
         'post_title',
         'post',
+        'sub_category_id',
     ];
 
     public function user(){
@@ -25,6 +26,7 @@ class Post extends Model
 
     public function subCategories(){
         // リレーションの定義
+        return $this->belongsTo('App\Models\SubCategory','sub_category_id');
     }
 
     // コメント数

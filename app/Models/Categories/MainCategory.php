@@ -14,6 +14,19 @@ class MainCategory extends Model
 
     public function subCategories(){
         // リレーションの定義
+        return $this->hasMany(SubCategory::class,'main_category_id');
     }
 
+     public function mainCategoryCreate(Request $request)
+{
+    $request->validate([
+        'main_category_name'=>['required','max:100','string']
+    ]);
+    SubCategory::create([
+        'main_category_id' => $request->main_category_id,
+
+    ]);
+    return redirect()->back();
+
+}
 }
