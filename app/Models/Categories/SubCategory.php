@@ -25,7 +25,7 @@ class SubCategory extends Model
     public function subCategoryCreate(Request $request)
 {
     $request->validate([
-        'sub_category_name'=>['required','max:100','string']
+        'sub_category_name'=>['required','max:100','string','unique:sub_categories,sub_category']
     ]);
     SubCategory::create([
         'sub_category_id' => $request->sub_category_id,
