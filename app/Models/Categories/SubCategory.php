@@ -14,7 +14,7 @@ class SubCategory extends Model
     ];
     public function mainCategory(){
         // リレーションの定義
-        return $this->belongsTo(MainCategory::class,'main_category');
+        return $this->belongsTo(MainCategory::class,'main_category_id');
     }
 
     public function posts(){
@@ -22,15 +22,5 @@ class SubCategory extends Model
         return $this->hasMany('App\Models\Posts\Post','sub_category_id');
     }
 
-    public function subCategoryCreate(Request $request)
-{
-    $request->validate([
-        'sub_category_name'=>['required','max:100','string','unique:sub_categories,sub_category']
-    ]);
-    SubCategory::create([
-        'sub_category_id' => $request->sub_category_id,
 
-    ]);
-    return redirect()->back();
-}
 }

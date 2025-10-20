@@ -49,7 +49,7 @@ class PostsController extends Controller
     }
 
     public function postInput(){
-        $main_categories = MainCategory::get();
+        $main_categories = MainCategory::with('subCategories')->get();
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
@@ -139,7 +139,9 @@ $request->validate([
  public function subCategoryCreate(Request $request)
 {
     $request->validate([
-        'sub_category_name'=>['required','max:100','string','unique:sub_categories,sub_category']
+        'sub_category_name'=>['required','max:100','string','unique:sub_categories,sub_category'],
+
+    ],[
 
     ]);
     SubCategory::create([

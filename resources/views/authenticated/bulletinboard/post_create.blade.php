@@ -7,7 +7,14 @@
         @foreach($main_categories as $main_category)
         <optgroup label="{{ $main_category->main_category }}">
         <!-- サブカテゴリー表示 -->
+         <!-- @if($main_category->subCategories) -->
+         @foreach($main_category->subCategories as $sub_category)
+         <option value="{{ $sub_category->id }}">
+          {{ $sub_category->sub_category }}
+</option>
+@endforeach
         </optgroup>
+        <!-- @endif -->
         @endforeach
       </select>
     </div>
@@ -44,6 +51,7 @@
       <!-- サブカテゴリー追加 -->
        <p class="m-0">サブカテゴリー</p>
       <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}
+
       <select name="main_category_id" class="w-100">
         @foreach ($main_categories as $main_categories)
         <option value="{{ $main_category->id }}">{{ $main_category->main_category}}</option>

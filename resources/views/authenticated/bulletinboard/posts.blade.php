@@ -50,8 +50,10 @@
     <div class="border m-4">
       <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
       <div class="">
+        <!-- <form id="postSearchRequest" action="{{ route('search.subcategory') }}" method="get"> -->
         <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
         <input type="submit" value="検索" form="postSearchRequest">
+        </form>
       </div>
       <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
