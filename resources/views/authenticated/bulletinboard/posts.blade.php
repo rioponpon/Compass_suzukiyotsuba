@@ -1,32 +1,14 @@
 <x-sidebar>
 <div class="board_area w-100 border m-auto d-flex">
   <div class="post_view w-75 mt-5">
-    <p class="w-75 m-auto">投稿一覧</p>
-    @foreach($posts as $post)
+    @if(request()->has('keyword')&& request('keyword') !== '')
+    <p class="w-75 m-auto">検索結果:{{ request('keyword') }}</p>
+    @else
+<p class="w-75 m-auto">投稿一覧</p>
+@endif
+    @forelse($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
-
-      <!-- 編集
-  @if(Auth::id() ==$post->user_id)
-  <div class="update-btn">
-    <a href="" post="{{ $post->post }}" post_id="{{ $post->id }}" class="edit-modal-open">
-      <button type="Update">編集</button>
-  </a>
-  </div>
-  @else
-  <td class="post-cell"></td>
-  @endif -->
-
-      <!-- 削除
-@if(Auth::id() == $post->user_id)
-<div class="post-cell">
-  <div class="delete-btn">
-    <a href="/bulletin_board/delete/{{ $post->id }}" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
-      <button type="Trash">削除</button>
-  </a>
-  </div>
-</div>
-@endif -->
 
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
@@ -44,16 +26,18 @@
         </div>
       </div>
     </div>
-    @endforeach
+    @empty
+   <p class="w-75 m-auto">投稿が見つかりません。</p>
+    @endforelse
   </div>
   <div class="other_area border w-25">
     <div class="border m-4">
       <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
       <div class="">
-        <!-- <form id="postSearchRequest" action="{{ route('search.subcategory') }}" method="get"> -->
         <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
         <input type="submit" value="検索" form="postSearchRequest">
         </form>
+
       </div>
       <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">

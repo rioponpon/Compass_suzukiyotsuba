@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             $data = $old_year . '-' . $old_month . '-' . $old_day;
             $birth_day = date('Y-m-d', strtotime($data));
             $subjects = $request->subject;
-
+// dd($subjects);
             $user_get = User::create([
                 'over_name' => $request->over_name,
                 'under_name' => $request->under_name,
@@ -68,7 +68,7 @@ class RegisteredUserController extends Controller
             return view('auth.login.login');
         }catch(\Exception $e){
             DB::rollback();
-            return redirect()->route('loginView');
+            return redirect()->route('login');
         }
     }
 }

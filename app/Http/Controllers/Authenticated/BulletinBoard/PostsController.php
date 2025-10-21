@@ -22,11 +22,22 @@ class PostsController extends Controller
         $categories = MainCategory::get();
         $like = new Like;
         $post_comment = new Post;
+        $keyword = $request->keyword;
         if(!empty($request->keyword)){
+            $subCategory =SubCategory::where('sub_category', $request->keyword)->first();
+
+        if ($subCategory) {
+$posts =$subCategory->posts()->with('user','postComments','likes','subCategories');
+dd($posts);
+// ->withCount('likes','postComments')
+            // ->where('post_title', 'like', '%'.$request->keyword.'%')
+            // ->orWhere('post', 'like', '%'.$request->keyword.'%')
+            // ->get();
+        }else{
             $posts = Post::with('user', 'postComments')
             ->withCount('likes','postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
-            ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+            ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();}
         }else if($request->category_word){
             $sub_category = $request->category_word;
             $posts = Post::with('user', 'postComments')->get();
@@ -57,8 +68,9 @@ class PostsController extends Controller
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
-            'post' => $request->post_body
+            'post' => $request->post_body,
         ]);
+        $post->subCategories()->attach($request->post_category_id);
         return redirect()->route('post.show');
     }
 
@@ -150,4 +162,17 @@ $request->validate([
     ]);
     return redirect()->route('post.input');
 }
+
+// public function searchSubCategory(Request $request){
+//     $keyword = $request->input('keyword');
+
+//     $subs = SubCategory::where('sub_category', $keyword)
+//     ->with('mainCategory')
+//     ->get();
+
+//     $grouped = $subs->groupBy(fn($sub) => $sub->mainCategory->name);
+
+//     return view('posts.search', compact('grouped','keyword'));
+// }
+
 }

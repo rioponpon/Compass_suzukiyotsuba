@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
             Route::post('create/main_category', [PostsController::class, 'mainCategoryCreate'])->name('main.category.create');
             Route::post('create/sub_category', [PostsController::class, 'subCategoryCreate'])->name('sub.category.create');
 
-            Route::get('search/subcategory', [PostsController::class, 'searchSubCategory'])->name('search.subcategory');
+            Route::get('search/subcategory', [PostsController::class, 'show'])->name('search.subcategory');
 
             Route::get('bulletin_board/post/{id}', [PostsController::class, 'postDetail'])->name('post.detail');
             Route::post('bulletin_board/edit', [PostsController::class, 'postEdit'])->name('post.edit');
