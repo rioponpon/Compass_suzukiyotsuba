@@ -27,12 +27,12 @@ class PostsController extends Controller
             $subCategory =SubCategory::where('sub_category', $request->keyword)->first();
 
         if ($subCategory) {
-$posts =$subCategory->posts()->with('user','postComments','likes','subCategories');
-dd($posts);
-// ->withCount('likes','postComments')
+$posts =$subCategory->posts()->with('user','postComments','likes','subCategories')
+// dd($posts);
+ ->withCount('likes','postComments')
             // ->where('post_title', 'like', '%'.$request->keyword.'%')
             // ->orWhere('post', 'like', '%'.$request->keyword.'%')
-            // ->get();
+             ->get();
         }else{
             $posts = Post::with('user', 'postComments')
             ->withCount('likes','postComments')
