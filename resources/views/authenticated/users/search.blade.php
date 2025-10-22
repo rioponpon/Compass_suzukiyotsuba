@@ -44,6 +44,9 @@
       <div>
         @if($user->role == 4)
         <span>選択科目 :</span>
+        <!-- ($user->subjects->isNotEmpty()) -->
+        {{ $user->subjects->pluck('subject')->join('・') }}
+
         @endif
       </div>
     </div>
