@@ -82,6 +82,7 @@
           </div>
           <div>
             <label>権限</label>
+            {{dd($subjects)}}
             <select name="role" form="userSearchRequest" class="engineer">
               <option selected disabled>----</option>
               <option value="1">教師(国語)</option>
@@ -92,6 +93,13 @@
           </div>
           <div class="selected_engineer">
             <label>選択科目</label>
+            <select name="subject" form="userSearchRequest" class="engineer">
+              <option selected  disabled>----</option>
+              @foreach($subjects as $subject)
+              <option value="{{ $subject->id }}">{{ $subject->subject }}</option>
+              @endforeach
+            </select>
+
           </div>
         </div>
       </div>
