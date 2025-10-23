@@ -82,7 +82,6 @@
           </div>
           <div>
             <label>権限</label>
-            {{dd($subjects)}}
             <select name="role" form="userSearchRequest" class="engineer">
               <option selected disabled>----</option>
               <option value="1">教師(国語)</option>
