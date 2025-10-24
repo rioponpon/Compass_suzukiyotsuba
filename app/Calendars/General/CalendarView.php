@@ -32,6 +32,8 @@ class CalendarView{
     $html[] = '</thead>';
     $html[] = '<tbody>';
     $weeks = $this->getWeeks();
+    $today = Carbon::today();
+
     foreach($weeks as $week){
       $html[] = '<tr class="'.$week->getClassName().'">';
 
@@ -41,7 +43,7 @@ class CalendarView{
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="calendar-td">';
+          $html[] = '<td class="calendar-td '.$day->getClassName(). ' "style="background-color:#d3d3d3;">';
         }else{
           $html[] = '<td class="calendar-td '.$day->getClassName().'">';
         }

@@ -8,7 +8,7 @@ class SearchResultFactories{
   // 改修課題：選択科目の検索機能
   public function initializeUsers($keyword, $category, $updown, $gender, $role, $selected_subject){
     if($category == 'name'){
-      if(is_null($subjects)){
+      if(is_null($selected_subject)){
         $searchResults = new SelectNames();
       }else{
         $searchResults = new SelectNameDetails();

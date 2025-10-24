@@ -31,6 +31,7 @@ class CalendarSettingView{
     $html[] = '</thead>';
     $html[] = '<tbody>';
     $weeks = $this->getWeeks();
+    $today = Carbon::today();
 
     foreach($weeks as $week){
       $html[] = '<tr class="'.$week->getClassName().'">';
@@ -42,7 +43,7 @@ class CalendarSettingView{
        if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="past-day border">';
         }else{
-          $html[] = '<td class="border '.$day->getClassName().'">';
+          $html[] = '<td class="border '.$day->getClassName().'" data-date=" ' .$day->everyDay().'">';
         }
         $html[] = $day->render();
         $html[] = '<div class="adjust-area">';
