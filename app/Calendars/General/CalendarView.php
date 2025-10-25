@@ -49,6 +49,8 @@ class CalendarView{
         }
         $html[] = $day->render();
 
+        $dayDate = Carbon::parse($day->everyDay());
+
         if(in_array($day->everyDay(), $day->authReserveDay())){
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
           if($reservePart == 1){
@@ -66,11 +68,16 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else{
-          $html[] = $day->selectPart($day->everyDay());
+if($dayDate->lt($today)){
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+ } else{  $html[] = $day->selectPart($day->everyDay());
+
         }
         $html[] = $day->getDate();
         $html[] = '</td>';
       }
+    }
       $html[] = '</tr>';
     }
     $html[] = '</tbody>';
