@@ -106,6 +106,10 @@ li {
   width: 60%;
 }
 
+.modal.open {
+  display: flex;
+}
+
 /* 掲示板 */
 .sub_categories {
   display: none;
@@ -308,4 +312,10 @@ li {
 
 .subject_inner {
   display: none;
+}
+
+
+/* 新規登録 */
+.message {
+  height: 5px;
 }

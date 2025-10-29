@@ -23,6 +23,7 @@ class CalendarController extends Controller
         try{
             $getPart = $request->getPart;
             $getDate = $request->getData;
+            // dd($getPart,$getDate);
             $reserveDays = array_filter(array_combine($getDate, $getPart));
             foreach($reserveDays as $key => $value){
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
@@ -34,5 +35,24 @@ class CalendarController extends Controller
             DB::rollback();
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+    }
+
+    public function delete(Request $request){
+        $reserveDate = $request->input('reserve_date');
+        $reservePart = (int)$request->input('reserve_part');
+dd($reserveDate,$reservePart);
+        // $userId = auth()->id();
+
+        $setting = ReserveSettings::where('setting_reserve',$reserveDate)
+        ->where('setting_part',$reservePart)
+        // ->where('user_id', $userId)
+        ->first();
+        if(!$setting){
+            return redirect()->back()->with('error','該当なし');
+        }
+
+        $setting->users()->detach(auth()->id());
+        $settings->increment('limit_users');
+        return redirect()->back()->with('success','予約をキャンセルしました。');
     }
 }

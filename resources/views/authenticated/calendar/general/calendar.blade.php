@@ -14,4 +14,26 @@
     </div>
   </div>
 </div>
+<!-- モーダル -->
+<div class="modal">
+  <div class="modal__dg modal_close"></div>
+  <div class="modal__content text-center p-3" style="max-width: 400px; margin: 0 auto;">
+    <div class="modal-body">
+      <p>予約日:<span class="modal_date"></span></p>
+       <p>時間:<span class="modal_part"></span></p>
+       <p>上記の予約をキャンセルしてもよろしいですか？</p>
+       <div class="d-flex justify-content-center gap-3 mt-4">
+        <button type="button" class="btn btn-primary modal_close">閉じる</button>
+
+    <form  method="post" action="{{ route('deleteParts') }}">
+      @csrf
+          <input type="hidden"  name="reserve_date" id="modal_date_input" class="modal_date_input" value="">
+          <input type="hidden"  name="reserve_part" id="modal_id_input" class="modal_id_input" value="">
+          <button type="submit" class="btn btn-danger">キャンセル</button>
+</form>
+        </div>
+      </div>
+       </div>
+    </div>
+    </div>
 </x-sidebar>
