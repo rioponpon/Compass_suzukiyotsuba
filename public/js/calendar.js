@@ -1,7 +1,7 @@
 $(function () {
   $('.open-modal-btn').on('click', function (e) {
 
-    e.preventDefault();
+    // e.preventDefault();
 
     const date = $(this).attr('data-date');
     const part = $(this).attr('data-part');

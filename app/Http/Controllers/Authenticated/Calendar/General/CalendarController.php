@@ -39,9 +39,17 @@ class CalendarController extends Controller
 
     public function delete(Request $request){
         $reserveDate = $request->input('reserve_date');
-        $reservePart = (int)$request->input('reserve_part');
-dd($reserveDate,$reservePart);
+        $reservePart = $request->input('reserve_part');
+// dd($reserveDate,$reservePart);
         // $userId = auth()->id();
+
+        if($reservePart === "リモ1部"){
+            $reservePart = 1;
+          }else if($reservePart === "リモ2部"){
+            $reservePart = 2;
+          }else if($reservePart === "リモ3部"){
+            $reservePart = 3;
+          }
 
         $setting = ReserveSettings::where('setting_reserve',$reserveDate)
         ->where('setting_part',$reservePart)
@@ -52,7 +60,7 @@ dd($reserveDate,$reservePart);
         }
 
         $setting->users()->detach(auth()->id());
-        $settings->increment('limit_users');
+        $setting->increment('limit_users');
         return redirect()->back()->with('success','予約をキャンセルしました。');
     }
 }

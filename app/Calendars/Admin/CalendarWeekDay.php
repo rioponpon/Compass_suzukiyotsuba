@@ -16,7 +16,11 @@ class CalendarWeekDay{
   }
 
   function render(){
-    return '<p class="day">' . $this->carbon->format("j") . '日</p>';
+    $ymd = $this->carbon->format("Y-m-d");
+    $html=[];
+    $html[]='<p class="day">' . $this->carbon->format("j") . '日</p>';
+    $html[] = $this->dayPartCounts($ymd);
+    return implode('',$html);
   }
 
   function everyDay(){
@@ -31,18 +35,56 @@ class CalendarWeekDay{
 
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      $count = $one_part->users->count();
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 1]) . '">1部 '.$count. '</p>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      $count = $two_part->users->count();
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 2]) . '">2部 '.$count. '</p>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $count = $three_part->users->count();
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 3]) . '">3部 '.$count. '</p>';
     }
     $html[] = '</div>';
 
     return implode("", $html);
   }
+
+//   function reserveFrames($ymd)
+// {
+//     $html = [];
+
+//     // 各部の残り枠を取得
+//     $one_part_frame = $this->onePartFrame($ymd);
+//     $two_part_frame = $this->twoPartFrame($ymd);
+//     $three_part_frame = $this->threePartFrame($ymd);
+
+//     $html[] = '<div class="text-left">';
+
+
+//     if ($one_part_frame == "0") {
+//         $html[] = '<p><a href="#" class="disabled">リモ1部(残り0枠)</a></p>';
+//     } else {
+//         $html[] = '<p><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 1]) . '">リモ1部(残り' . $one_part_frame . '枠)</a></p>';
+//     }
+
+//     if ($two_part_frame == "0") {
+//         $html[] = '<p><a href="#" class="disabled">リモ2部(残り0枠)</a></p>';
+//     } else {
+//         $html[] = '<p><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 2]) . '">リモ2部(残り' . $two_part_frame . '枠)</a></p>';
+//     }
+
+//     if ($three_part_frame == "0") {
+//         $html[] = '<p><a href="#" class="disabled">リモ3部(残り0枠)</a></p>';
+//     } else {
+//         $html[] = '<p><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 3]) . '">リモ3部(残り' . $three_part_frame . '枠)</a></p>';
+//     }
+
+//     $html[] = '</div>';
+
+//     return implode('', $html);
+// }
 
 
   function onePartFrame($day){

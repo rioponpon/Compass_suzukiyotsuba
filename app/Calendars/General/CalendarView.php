@@ -49,6 +49,7 @@ class CalendarView{
         }
         $html[] = $day->render();
 
+
         $dayDate = Carbon::parse($day->everyDay());
 
         if(in_array($day->everyDay(), $day->authReserveDay())){
@@ -68,13 +69,14 @@ class CalendarView{
           }
 
           else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 open-modal-btn" name="delete_date" style="font-size:12px"
+            $html[] = '<button type="button" class="btn btn-danger p-0 w-75 open-modal-btn" name="delete_date" style="font-size:12px"
             data-date="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'"
             data-part="'.$reservePart .'">
 '. $reservePart .'
             </button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-
+ $html[] = $day->getDate();
+        $html[] = '</td>';
           }
         }else{
 if($dayDate->lt($today)){
