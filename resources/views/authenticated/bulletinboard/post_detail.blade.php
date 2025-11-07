@@ -8,7 +8,7 @@
           </div>
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}"onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
+            <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="post-delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
           </div>
         </div>
 
@@ -45,7 +45,9 @@
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
+        <div class="comment-btn">
         <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+        </div>
         <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
       </div>
     </div>
@@ -73,3 +75,26 @@
   </div>
 </div>
 </x-sidebar>
+
+<style>
+  .post-delete{
+    display: inline-block;
+    background-color: #EE0000;
+    color: white;
+    padding: 4px 15px;
+    border-radius:5px;
+  }
+
+  .edit-modal-open{
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 4px 15px;
+    border-radius:5px;
+  }
+
+  .comment-btn{
+    text-align: right;
+  }
+
+</style>

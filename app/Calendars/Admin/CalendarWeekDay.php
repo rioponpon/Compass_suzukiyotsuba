@@ -19,7 +19,7 @@ class CalendarWeekDay{
     $ymd = $this->carbon->format("Y-m-d");
     $html=[];
     $html[]='<p class="day">' . $this->carbon->format("j") . '日</p>';
-    $html[] = $this->dayPartCounts($ymd);
+    // $html[] = $this->dayPartCounts($ymd);
     return implode('',$html);
   }
 
@@ -29,11 +29,20 @@ class CalendarWeekDay{
 
   function dayPartCounts($ymd){
     $html = [];
-    $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
+    $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part','1')->first();
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
+    // $parts = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', ['1','2','3'])->get()->keyBy('setting_part');
+
     $html[] = '<div class="text-left">';
+    // foreach([1,2,3] as $part){
+    //   if(isset($parts[$part])){
+    //   $count = $parts[$part]->users->count();
+    //   $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => $part]) . '"> ' .$part.'部' .$count. '</a></p>';
+    // }
+    // }
+
     if($one_part){
       $count = $one_part->users->count();
       $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 1]) . '">1部 '.$count. '</p>';

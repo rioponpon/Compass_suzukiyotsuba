@@ -32,15 +32,19 @@
   </div>
   <div class="other_area border w-25">
     <div class="border m-4">
-      <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
-      <div class="">
+      <div class=""><a href="{{ route('post.input') }}" class="post-btn">投稿</a></div>
+      <div class="post-search-box">
         <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
         <input type="submit" value="検索" form="postSearchRequest">
         </form>
 
       </div>
-      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
+      <div class="post-search">
+      <div class="like">
+      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest"></div>
+<div class="my-post">
+      <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest"></div>
+</div>
       <ul>
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
@@ -53,3 +57,51 @@
 
 <script src="{{ asset('js/bulletin.js') }}"></script>
 </x-sidebar>
+
+<style>
+  .post-btn{
+    display: inline-block;
+    background-color: #5bc0de;
+    color: white;
+    padding: 4px 70px;
+    border-radius:5px;
+  }
+
+  .post-search-box{
+    margin-top:10px;
+    display: flex;
+    align-items:center;
+  }
+
+  .post-search-box input[type="text"]{
+    background-color: #f5f5f5;
+    border: 1px;
+  }
+  .post-search-box input[type="submit"]{
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    border-radius:0 4px 4px 0;
+    padding: 4px 20px;
+  }
+
+  .like input[type="submit"]{
+    background-color: #FF9BAD;
+    color: white;
+    border: none;
+     padding: 4px 20px;
+  }
+
+  .post-search{
+    margin-top:10px;
+    display: flex;
+    align-items:center;
+  }
+
+  .my-post input[type="submit"]{
+    background-color: #FFC666;
+    color: white;
+    border: none;
+     padding: 4px 20px;
+  }
+</style>

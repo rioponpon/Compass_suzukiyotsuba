@@ -1,6 +1,6 @@
 <x-sidebar>
-<p>ユーザー検索</p>
-<div class="search_content w-100 border d-flex">
+
+<div class="search_content w-100  d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
     <div class="border one_person">
@@ -52,9 +52,10 @@
     </div>
     @endforeach
   </div>
-  <div class="search_area w-25 border">
+  <div class="search_area w-25 ">
     <div class="">
       <div>
+        <p>検索</p>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div>
@@ -72,8 +73,8 @@
         </select>
       </div>
       <div class="">
-        <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
-        <div class="search_conditions_inner">
+        <p class="m-0 search_conditions js-search-accordion"><span>検索条件の追加</span></p>
+        <div class="search_conditions_inner" style="display:none;">
           <div>
             <label>性別</label>
             <span>男</span><input type="radio" name="sex" value="1" form="userSearchRequest">
@@ -104,14 +105,36 @@
           </div>
         </div>
       </div>
-      <div>
-        <input type="reset" value="リセット" form="userSearchRequest">
-      </div>
-      <div>
+       <div class= "user-search">
         <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
       </div>
+      <div class="re">
+        <input type="reset" value="リセット" form="userSearchRequest" class="reset">
+      </div>
+
     </div>
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
   </div>
 </div>
 </x-sidebar>
+
+<style>
+
+
+
+.search_content{
+  background-color: transparent !important;
+  border:none;
+  flex-wrap: wrap;
+
+}
+
+
+
+.reserve_users_are{
+  overflow: visible;
+  background-color: transparent !important;
+  border:none;
+  flex-wrap: wrap;
+}
+</style>

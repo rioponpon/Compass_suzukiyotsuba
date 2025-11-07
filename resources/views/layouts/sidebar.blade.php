@@ -20,8 +20,8 @@
     <body class="all_content">
         <div class="d-flex">
             <div class="sidebar">
-                <p><a href="{{ route('top.show') }}">トップ</a></p>
-                <p><a href="/logout">ログアウト</a></p>
+                <p><a href="{{ route('top.show') }}">マイページ</a></p>
+                <p><a href="/logout" class="logout-link"><img src="/image/logout.PNG" class="side-icon">ログアウト</a></p>
                 <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
 <!--講師のみ表示　-->
 @auth
@@ -31,7 +31,7 @@
 @endif
 @endauth
 
-                <p><a href="{{ route('post.show') }}">掲示板</a></p>
+                <p><a href="{{ route('post.show') }}"><img src="/image/ke.PNG" class="side-icon">掲示板</a></p>
                 <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
             </div>
             <div class="main-container">
@@ -44,3 +44,10 @@
         <script src="{{ asset('js/calendar.js') }}" rel="stylesheet"></script>
     </body>
 </html>
+
+<style>
+    .side-icon{
+        width:20px;
+        height: 20px;
+    }
+</style>
