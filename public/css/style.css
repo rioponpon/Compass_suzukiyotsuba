@@ -18,7 +18,7 @@ li {
 
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: 170px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
@@ -30,12 +30,15 @@ li {
 
 .sidebar p a {
   color: #FFF;
+  font-size: 15px;
 }
 
 /* トップページ */
 .user_status {
   border-radius: 10px;
   background: #FFF;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
 }
 
 /* スクール予約関連 */
@@ -142,11 +145,14 @@ li {
 .like_btn,
 .un_like_btn {
   cursor: pointer;
+  text-align: right;
+
 }
 
 .un_like,
 .un_like_btn {
   color: #E2254D;
+  text-align: right;
 }
 
 .error_message {
@@ -184,7 +190,14 @@ li {
   align-items: center;
 }
 
-
+.link {
+  display: inline-block;
+  background-color: #5bc0de;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-size: 10px;
+}
 
 /* 掲示板 詳細画面 */
 .contributor {
@@ -474,3 +487,22 @@ li {
 .subject_edit_btn {
   color: #5bc0de;
 }
+
+
+/* .message {
+  /* display: block; */
+/* font-size: 12px;
+  margin-top: 2px;
+  line-height: 1.2;
+  height: auto;
+  padding: 0;
+  min-height: 14px;
+}
+
+label+.message {
+  margin-top: 2px;
+}
+
+.message+.border-bottom {
+  margin-top: 2px;
+} */
