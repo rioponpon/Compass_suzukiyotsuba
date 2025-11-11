@@ -8,4 +8,9 @@ $(function () {
     $('.subject_inner').slideToggle();
     $(this).toggleClass('open', 200);
   });
+
+  $('.main_categories').click(function () {
+    $('.sub-list').slideToggle();
+    $(this).toggleClass('open', 200);
+  });
 });

@@ -4,7 +4,11 @@
     <div class="m-3 detail_container">
       <div class="p-3">
         <div class="detail_inner_head">
-          <div>
+          <div class="post-sub mb-3">
+            @foreach($post->subCategories as $subCategory)
+            <span class="sub-category-tag">{{ $subCategory->sub_category }}</span>
+            @endforeach
+
           </div>
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
@@ -95,6 +99,13 @@
 
   .comment-btn{
     text-align: right;
+  }
+
+.sub-category-tag{
+   background-color: #5bc0de;
+    color: white;
+    padding: 4px 7px;
+    border-radius:5px;
   }
 
 </style>

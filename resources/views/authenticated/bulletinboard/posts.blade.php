@@ -10,7 +10,7 @@
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
 
-      <p><a href="{{ route('post.detail', ['id' => $post->id]) }}" class="link">{{ $post->post_title }}</a></p>
+      <p><a href="{{ route('post.detail', ['id' => $post->id]) }}" class="link">{{ $post->subCategories?->pluck('sub_category')->join('、') }}</a></p>
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
           <div class="mr-5">
@@ -45,11 +45,28 @@
 <div class="my-post">
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest"></div>
 </div>
+<div class="category-box">
+  <p class="box-title">カテゴリー検索</p>
+  <div class=category-list>
       <ul>
         @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+
+        <li class="main_categories" category_id="{{ $category->id }}"><span>
+          {{ $category->main_category }}<span></li>
+        <ul class=sub-list>
+          @foreach($category->subCategories as $sub)
+          <li>
+            <label style="border-bottom:1px solid #dcdcdc;">
+              <!-- <input type="checkbox" name="sub_category_id[]" value="{{ $sub->id }}" form="postSearchRequest">  -->
+              {{ $sub->sub_category }}
+            </label>
+          </li>
+          @endforeach
+        </ul>
         @endforeach
       </ul>
+      </div>
+      </div>
     </div>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
@@ -104,4 +121,31 @@
     border: none;
      padding: 4px 20px;
   }
+
+ /* .box-title{
+  font-weight: bold;
+  margin-bottom: 10px;
+ } */
+
+  .main_categories{
+    background:none;
+    border-bottom:1px solid #dcdcdc;
+  }
+
+  .main_categories::after {
+  border-right: solid 2px #dcdcdc;
+  border-top: solid 2px #dcdcdc;
+  content: "";
+  display: inline-block;
+  margin-left: 5px;
+  height: 10px;
+  transform: rotate(135deg);
+  transition: transform .3s ease-in-out, top .2s ease-in-out;
+  width: 10px;
+}
+
+.main_categories.open::after {
+  transform: rotate(-45deg);
+}
+
 </style>
