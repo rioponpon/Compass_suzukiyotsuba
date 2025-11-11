@@ -22,7 +22,7 @@
       <p>予約日:<span class="modal_date"></span></p>
        <p>時間:<span class="modal_part"></span></p>
        <p>上記の予約をキャンセルしてもよろしいですか？</p>
-       <div class="d-flex justify-content-center gap-3 mt-4">
+       <div class="d-flex justify-content-between gap-3 mt-4">
         <button type="button" class="btn btn-primary modal_close">閉じる</button>
 
     <form  method="post" action="{{ route('deleteParts') }}">
@@ -37,3 +37,9 @@
     </div>
     </div>
 </x-sidebar>
+
+<style>
+  .btn btn-primary{
+text-align:left;
+  }
+</style>
