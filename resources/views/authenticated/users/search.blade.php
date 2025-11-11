@@ -131,10 +131,16 @@
 
 
 
-.reserve_users_are{
+.reserve_users_area{
   overflow: visible;
   background-color: transparent !important;
   border:none;
   flex-wrap: wrap;
+  /* grid-template-columns: repeat(4,1fr); */
+  gap: 16px;
+}
+
+.one_person{
+  flex: 0 0 calc(25% - 12px);
 }
 </style>

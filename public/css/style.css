@@ -489,17 +489,13 @@ li {
 }
 
 
-/* .message {
-  /* display: block; */
-/* font-size: 12px;
+.message {
+  font-size: 12px;
   margin-top: 2px;
-  line-height: 1.2;
-  height: auto;
-  padding: 0;
   min-height: 14px;
 }
 
-label+.message {
+/* label+.message {
   margin-top: 2px;
 }
 
