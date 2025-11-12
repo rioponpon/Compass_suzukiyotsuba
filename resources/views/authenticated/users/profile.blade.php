@@ -7,8 +7,9 @@
       <p>カナ : <span>{{ $user->over_name_kana }}</span><span class="ml-1">{{ $user->under_name_kana }}</span></p>
       <p>性別 : @if($user->sex == 1)<span>男</span>@else<span>女</span>@endif</p>
       <p>生年月日 : <span>{{ $user->birth_day }}</span></p>
-      <div>
-        <span >選択科目 :
+
+      <div class="subject-list">
+        <span >選択科目 :</span>
         @foreach($user->subjects as $subject)
         <span>{{ $subject->subject }}</span>
         @endforeach
@@ -42,3 +43,9 @@
 </div>
 
 </x-sidebar>
+
+<style>
+  .subject-list span {
+  font-size: 1rem;
+}
+</style>

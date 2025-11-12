@@ -41,7 +41,7 @@
         <span>権限 : </span><span>生徒</span>
         @endif
       </div>
-      <div>
+      <div class="subject-line">
         @if($user->role == 4)
         <span>選択科目 :</span>
         <!-- ($user->subjects->isNotEmpty()) -->
@@ -142,5 +142,10 @@
 
 .one_person{
   flex: 0 0 calc(25% - 12px);
+}
+
+.subject-line{
+  font-size: 12px;
+  font-weight: normal;
 }
 </style>

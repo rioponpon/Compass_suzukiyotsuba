@@ -10,6 +10,8 @@
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
 
+ <p><a href="{{ route('post.detail', ['id' => $post->id]) }}" class="title">{{ $post->post_title }}</a></p>
+
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}" class="link">{{ $post->subCategories?->pluck('sub_category')->join('、') }}</a></p>
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
@@ -53,7 +55,7 @@
 
         <li class="main_categories" category_id="{{ $category->id }}"><span>
           {{ $category->main_category }}<span></li>
-        <ul class=sub-list>
+        <ul class=sub-list parent_id="{{ $category->id }}" style="display:none;">
           @foreach($category->subCategories as $sub)
           <li>
             <label style="border-bottom:1px solid #dcdcdc;">
@@ -146,6 +148,10 @@
 
 .main_categories.open::after {
   transform: rotate(-45deg);
+}
+
+.title{
+  color:black;
 }
 
 </style>

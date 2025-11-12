@@ -5,17 +5,18 @@
       <div class="w-30 vh-75 border p-3 " style="border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);">
 
         <div class="register_form">
-  @error('over_name')
-                <div class = "message">{{ $message }}</div>
-                @enderror
+
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="class2" style="width:140px; display:flex; flex-direction:column;">
-
+ @error('over_name')
+                <div class = "message">{{ $message }}</div>
+                @enderror
               <label class="d-block m-0" style="font-size:13px">姓</label>
               <div class="border-bottom border-primary" style="width:140px;">
 
                 <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
               </div>
+
 </div>
             <div class="class" style="width:140px; display:flex; flex-direction:column;">
  @error('under_name')
