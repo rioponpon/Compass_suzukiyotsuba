@@ -18,7 +18,7 @@ li {
 
 /* サイドバー */
 .sidebar {
-  width: 170px;
+  width: 150px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
@@ -30,7 +30,7 @@ li {
 
 .sidebar p a {
   color: #FFF;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 /* トップページ */
