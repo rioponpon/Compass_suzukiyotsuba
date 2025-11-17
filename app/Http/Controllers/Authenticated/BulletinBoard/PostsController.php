@@ -88,7 +88,12 @@ $posts =$subCategory->posts()->with('user','postComments','likes','subCategories
     }
     public function mainCategoryCreate(Request $request){
 $request->validate([
-        'main_category_name'=>['required','max:100','string','unique:main_categories,main_category']
+        'main_category_name'=>['required','max:100','string','unique:main_categories,main_category'],],[
+       'main_category_name.required' => 'メインカテゴリー名は必須項目です。',
+        'main_category_name.max'      => 'メインカテゴリー名は100文字以内で入力してください。',
+        'main_category_name.string'   => 'メインカテゴリー名は文字列で入力してください。',
+        'main_category_name.unique'   => '同じ名前のメインカテゴリーは登録できません。',
+
     ]);
 
         MainCategory::create(['main_category' => $request->main_category_name]);
@@ -98,7 +103,10 @@ $request->validate([
     public function commentCreate(Request $request){
 
         $request->validate([
-            'comment' =>['required','string','max:250'],
+            'comment' =>['required','string','max:250'],],[
+
+            'comment.required' => 'コメントは必ず入力してください。',
+            'comment.max'      => 'コメントは250文字以内で入力してください。',
         ]);
         PostComment::create([
             'post_id' => $request->post_id,
@@ -151,9 +159,12 @@ $request->validate([
  public function subCategoryCreate(Request $request)
 {
     $request->validate([
-        'sub_category_name'=>['required','max:100','string','unique:sub_categories,sub_category'],
-
+        'sub_category_name'=>['required','max:100','string','unique:sub_categories,sub_category',],
     ],[
+        'sub_category_name.required' => 'サブカテゴリー名は必須項目です。',
+        'sub_category_name.max'      => 'サブカテゴリー名は100文字以内で入力してください。',
+        'sub_category_name.string'   => 'サブカテゴリー名は文字列で入力してください。',
+        'sub_category_name.unique'   => '同じ名前のサブカテゴリーは登録できません。',
 
     ]);
     SubCategory::create([
