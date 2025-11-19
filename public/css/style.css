@@ -18,6 +18,7 @@ li {
 
 /* サイドバー */
 .sidebar {
+  position: fixed;
   width: 150px;
   height: 100vh;
   background-color: #03AAD2;
@@ -26,6 +27,7 @@ li {
 
 .main-container {
   width: 100%;
+  margin-left: 150px;
 }
 
 .sidebar p a {

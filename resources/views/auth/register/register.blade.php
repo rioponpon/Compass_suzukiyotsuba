@@ -44,12 +44,13 @@
               @error('under_name_kana')
                 <div class = "message">{{ $message }}</div>
                 @enderror
+<div style="width:140px">
               <label class="d-block m-0" style="font-size:13px">メイ</label>
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
             </div>
-          <!-- </div> -->
+           </div>
           <div class="mt-3">
              @error('mail_address')
                 <div class = "message">{{ $message }}</div>

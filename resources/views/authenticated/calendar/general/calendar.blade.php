@@ -17,7 +17,7 @@
 <!-- モーダル -->
 <div class="modal">
   <div class="modal__dg modal_close"></div>
-  <div class="modal__content text-algin:left; p-3" style="max-width: 400px; margin: 0 auto;">
+  <div class="modal__content text-algin:left; p-3" style="max-width: 650px; margin: 0 auto;">
     <div class="modal-body">
       <p>予約日:<span class="modal_date"></span></p>
        <p>時間:<span class="modal_part"></span></p>
