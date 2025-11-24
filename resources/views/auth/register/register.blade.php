@@ -34,19 +34,19 @@
                 @enderror
           <div class="d-flex mt-3" style="justify-content:space-between">
             <!-- <div class="" style="width:140px"> -->
-<div style="width:140px">
+  <div class="class2" style="width:140px; display:flex; flex-direction:column;">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
               <div class="border-bottom border-primary" style="width:120px;">
                 <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
             </div>
+             <div class="class" style="width:140px; display:flex; flex-direction:column;">
             <!-- <div class="" style="width:140px"> -->
               @error('under_name_kana')
                 <div class = "message">{{ $message }}</div>
                 @enderror
-<div style="width:140px">
               <label class="d-block m-0" style="font-size:13px">メイ</label>
-              <div class="border-bottom border-primary" style="width:140px;">
+              <div class="border-bottom border-primary" style="width:120px;">
                 <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
             </div>
