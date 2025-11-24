@@ -496,10 +496,14 @@ li {
   font-size: 12px;
   margin-top: 2px;
   min-height: 14px;
+  white-space: nowrap;
+  line-height: 1.2;
   color: red;
 }
 
-
+.class2 .message .class .message {
+  min-height: 14px;
+}
 
 /* label+.message {
   margin-top: 2px;
